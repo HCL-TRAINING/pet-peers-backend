@@ -1,13 +1,1 @@
-{
-  "pets": [
-    { "id": 1, "name": "pet1", "age": 4, "place": "Singapore", "sold": false },
-    { "id": 2, "name": "pet2", "age": 5, "place": "USA", "sold": true },
-    { "id": 3, "name": "pet3", "age": 10, "place": "INDIA", "sold": false },
-    { "id": 4, "name": "pet4", "age": 2, "place": "Singapore", "sold": true },
-    { "id": 5, "name": "Pet5", "age": 3, "place": "CHINa", "sold": false },
-    { "id": 6, "name": "pet5", "age": 3, "place": "CHINA", "sold": false },
-    { "id": 7, "name": "pet6", "age": 2, "place": "India", "sold": false },
-    { "id": 8, "name": "pet7", "age": 2, "place": "CHINa", "sold": false },
-    { "id": 9, "name": "Pet7", "age": 2, "place": "India", "sold": false }
-  ]
-}
+{"pets":[{"id":1,"name":"pet1","age":4,"place":"Singapore","sold":false},{"id":2,"name":"pet2","age":5,"place":"USA","sold":true},{"id":3,"name":"pet3","age":10,"place":"INDIA","sold":false},{"id":4,"name":"pet4","age":2,"place":"Singapore","sold":true},{"id":5,"name":"Pet5","age":3,"place":"CHINa","sold":false},{"id":6,"name":"pet5","age":3,"place":"CHINA","sold":false},{"id":7,"name":"pet6","age":2,"place":"India","sold":false},{"id":8,"name":"pet7","age":2,"place":"CHINa","sold":false},{"id":9,"name":"Pet7","age":2,"place":"India","sold":false},{"id":10,"name":"Pet10","age":3,"place":"INDIA","sold":false}]}
