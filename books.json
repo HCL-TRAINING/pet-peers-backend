@@ -1,0 +1,9 @@
+{
+    "books": [
+      { "id": 1, "name": "Shiwank", "book_name": "Book1", "user_id": "100", "status": "BORROWED"},
+      { "id": 2, "name": "Mohan", "book_name": "Book2", "user_id": "101", "status": "BORROWED"},
+      { "id": 3, "name": "Shiwank", "book_name": "Book2", "user_id": "100", "status": "BORROWED"},
+      { "id": 4, "name": "Shiwank", "book_name": "Book3", "user_id": "102", "status": "BORROWED"}
+    ]
+  }
+  

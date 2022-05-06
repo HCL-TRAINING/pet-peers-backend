@@ -5,8 +5,11 @@ const jwt = require('jsonwebtoken')
 
 const server = jsonServer.create()
 const router = jsonServer.router('./database.json')
-const userdb = JSON.parse(fs.readFileSync('./users.json', 'UTF-8'))
+const userdb = JSON.parse(fs.readFileSync('./users.json', 'UTF-8'));
+const librarydb = JSON.parse(fs.readFileSync('./members.json', 'UTF-8'))
 const petdb = JSON.parse(fs.readFileSync('./pets.json', 'UTF-8'))
+const booksdb = JSON.parse(fs.readFileSync('./books.json', 'UTF-8'))
+
 const auth = require("./auth");
 
 server.use(bodyParser.urlencoded({extended: true}))
@@ -27,9 +30,14 @@ function verifyToken(token){
   return  jwt.verify(token, SECRET_KEY, (err, decode) => decode !== undefined ?  decode : err)
 }
 
+// // Check if the user exists in database
+// function isAuthenticated({email, password}){
+//   return userdb.users.findIndex(user => user.email === email && user.password === password);
+// }
+
 // Check if the user exists in database
 function isAuthenticated({email, password}){
-  return userdb.users.findIndex(user => user.email === email && user.password === password);
+  return librarydb.users.findIndex(user => user.email === email && user.password === password);
 }
 
 // Register New User
@@ -113,7 +121,29 @@ fs.readFile("./pets.json", (err, data) => {
 });
 
 
-// Login to one of the users from ./users.json
+// // Login to one of the users from ./users.json
+// server.post('/auth/login', (req, res) => {
+//   console.log("login endpoint called; request body:");
+//   console.log(req.body);
+//   const {email, password} = req.body;
+//   const index = isAuthenticated({email, password});
+//   console.log('index', index);
+//   if (index === -1) {
+//     const status = 401
+//     const message = 'Incorrect email or password'
+//     res.status(status).json({status, message})
+//     return
+//   }
+//   const access_token = createToken({email, password})
+//   console.log("Access Token:" + access_token);
+//   res.status(200).json({
+//     access_token,
+//     username: userdb.users[index].username
+//   })
+// })
+
+
+// Login to one of the users from ./members.json
 server.post('/auth/login', (req, res) => {
   console.log("login endpoint called; request body:");
   console.log(req.body);
@@ -130,12 +160,17 @@ server.post('/auth/login', (req, res) => {
   console.log("Access Token:" + access_token);
   res.status(200).json({
     access_token,
-    username: userdb.users[index].username
+    username: librarydb.users[index].username,
+    role: librarydb.users[index].role,
   })
 })
 
 server.get('/pets',auth, (req, res) => {
   res.status(200).json(petdb.pets)
+});
+
+server.get('/books',auth, (req, res) => {
+  res.status(200).json(booksdb.books)
 });
 
 server.patch('/buy_pet/:id',auth, (req, res) => {
